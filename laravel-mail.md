@@ -134,3 +134,4 @@ public function testMail(Request $request)
 referensi : 
 * https://blog.mailtrap.io/send-email-in-laravel/#What_you_need_to_know_about_Laravel_Mail 
 * https://laravel.com/docs/8.x/mail
+* https://www.cloudways.com/blog/send-email-in-laravel/
