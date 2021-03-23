@@ -98,12 +98,37 @@ Dalam pengembangan . . .
 Dalam pengembangan . . .
 </p>
 
-
 ## 3. Pembuatan blade / view sebagai tampilan email
 <p></p>
 
+Contoh :
+```html
+// direkrtori : \resources\views\emails\new-user.blade.php
+
+<div>
+    Nama saya : {{ $name }}
+</div>
+```
+
 ## 4. Memanggil fungsi Mail untuk mengirim pesan dari Controller
 <p></p>
+
+Contoh :
+
+```php
+public function testMail(Request $request)
+{
+	$name = "Painem";
+    $subject = "test ngirim email";
+
+    Mail::to('developer.arsoft@gmail.com')
+    	->cc('cak.inem@gmail.com')
+        ->bcc('pak.jayan@gmail.com')
+        ->send(new NewUser($subject, $name));
+
+	dd('asd');
+}
+```
 
 
 
