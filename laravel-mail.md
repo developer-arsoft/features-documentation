@@ -118,7 +118,7 @@ Contoh :
 ```php
 public function testMail(Request $request)
 {
-	$name = "Painem";
+    $name = "Painem";
     $subject = "test ngirim email";
 
     Mail::to('developer.arsoft@gmail.com')
