@@ -130,24 +130,3 @@ public function testMail(Request $request)
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
