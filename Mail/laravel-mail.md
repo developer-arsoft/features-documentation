@@ -86,8 +86,25 @@ Contoh :
 
 ### 2.2 SMTP-Gmail
 <p>
-Dalam pengembangan . . .
+Untuk menggunakan SMTP dari Gmail, dapat mengikuti langkah-langkah berikut :
 </p>
+1. Konfigurasi .env 
+
+```env
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.googlemail.com
+MAIL_PORT=465
+MAIL_USERNAME=ENTER_YOUR_EMAIL_ADDRESS(GMAIL)
+MAIL_PASSWORD=ENTER_YOUR_GMAIL_PASSWORD
+MAIL_ENCRYPTION=ssl
+```
+
+2. Konfigurasi akun gmail yang akan digunakan
+	* Login ke akun Gmail, pilih <b>Manage your Google Account</b>
+	* Pilih menu <b>Security</b>
+	* Scroll ke bawah untuk mencari menu <b>Less secure app access</b> dan aktifkan menu ini
+	* ![GitHub Logo](/Mail/images/configure-gmail-account-2.jpg)
+3. Selesai
 
 ### 2.2 Mailgun
 <p>
@@ -136,3 +153,4 @@ referensi :
 * https://blog.mailtrap.io/send-email-in-laravel/#What_you_need_to_know_about_Laravel_Mail 
 * https://laravel.com/docs/8.x/mail
 * https://www.cloudways.com/blog/send-email-in-laravel/
+* https://medium.com/@agavitalis/how-to-send-an-email-in-laravel-using-gmail-smtp-server-53d962f01a0c
