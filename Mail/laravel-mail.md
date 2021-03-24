@@ -81,8 +81,7 @@ Konfigurasi ini didapatkan dari sistem Mailtrap. Untuk mendapatkannya, bisa deng
 </p>
 
 Contoh :
-![GitHub Logo](/images/mailtrap-1.jpg)
-Format: ![Alt Text](url)
+![GitHub Logo](/Mail/images/mailtrap-1.jpg)
 
 ### 2.2 SMTP-Gmail
 <p>
