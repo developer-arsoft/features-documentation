@@ -85,6 +85,7 @@ Untuk menjalankan fitur Mail ini, perlu dilakukan penyesuaian environment sesuai
   Konfigurasi ini didapatkan dari sistem Mailtrap. Untuk mendapatkannya, bisa dengan login ke akun *Mailtrap*, kemudian pilih *Inboxes* lalu pilih inbox yang diinginkan
 
   Contoh :
+  
   ![GitHub Logo](/Mail/images/mailtrap-1.jpg)
   ![GitHub Logo](/Mail/images/mailtrap-2.jpg)
 
