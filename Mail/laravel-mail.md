@@ -1,17 +1,18 @@
 # Implementasi Mail pada proyek Laravel
-<br />
+
 Untuk mengimplementasikan mail system pada proyek laravel, berikut ini langkah-langkah yang harus dilakukan :
-<br />
 
-## 1. Mailable
-<p>Mailable ini digunakan sebagai konstruksi dasar mekanisme mail yang akan digunakan. Didalamnya, dapat dilakukan kustomisasi data mail mulai dari  <b>from, subject, view, attach</b> ( dan lain-lain )</p>
-<p>Perintah dibawah ini akan melakukan generate mailable pada direktori <b>App/Mail</b>. Sesuaikan nama mailable yang ingin dibuat dengan merubah teks <b>NewUser</b></p>
+## Mailable
 
-```
+Mailable ini digunakan sebagai konstruksi dasar mekanisme mail yang akan digunakan. Didalamnya, dapat dilakukan kustomisasi data mail mulai dari **from, subject, view, attach** ( dan lain-lain )
+
+Perintah dibawah ini akan melakukan generate mailable pada direktori **App/Mail**. Sesuaikan nama mailable yang ingin dibuat dengan merubah teks **NewUser**
+
+```composer
 php artisan make:mail NewUser
 ```
 
-Contoh :
+Contoh file hasil generate :
 
 ```php
 namespace App\Mail;
@@ -52,64 +53,67 @@ class NewUser extends Mailable implements ShouldQueue
 
 ```
 
-### 1.1 konfigurasi fungsi <i>from</i>
-<p>fungsi <i>from</i> digunakan untuk mengatur email asal atau email pengirim.</p>
+* Konfigurasi fungsi *from*
 
-### 1.2 konfigurasi fungsi <i>view</i>
-<p>fungsi <i>view</i> digunakan untuk mengatur tampilan email yang akan dikirim. Lokasi file yang dipanggil berada pada direktori <b>/resources/views</b>. Format pemanggilan file sama dengan format pemanggilan <b>blade</b> pada laravel, yakni <b>/folder-name/file-name</b>.
-<p>Penjelasan lebih lanjut akan dibahas pada point yang berbeda.</p>
+  Fungsi *from* digunakan untuk mengatur email asal atau email pengirim.
 
-##### NB : selain fungsi-fungsi diatas, masih banyak fungsi lain untuk melakukan kustomisasi mail, lebih lanjut bisa di lihat di <a href="https://laravel.com/docs/8.x/mail" target="_blank">sini</a>
+* Konfigurasi fungsi *view*
 
-## 2. Penyesuaian environment ( .env )
-<p>Untuk menjalankan fitur Mail ini, perlu dilakukan penyesuaian environment sesuai dengan <i>driver</i> mail yang akan digunakan.</p>
+  Fungsi *view* digunakan untuk mengatur tampilan email yang akan dikirim. Lokasi file yang dipanggil berada pada direktori **/resources/views**. Format pemanggilan file sama dengan format pemanggilan **blade** pada laravel, yakni **/folder-name/file-name**.
 
-### 2.1 SMTP-Mailtrap
-<p>Berikut contoh konfigurasi .env untuk <i>driver</i> Mailtrap</p>
+  Penjelasan lebih lanjut akan dibahas pada point yang berbeda.
 
-```env
-MAIL_MAILER=smtp
-MAIL_HOST=smtp.mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=8caasd210878aw
-MAIL_PASSWORD=c0f6dqw12c2weq
-MAIL_ENCRYPTION=tls
-```
+* NB : selain fungsi-fungsi diatas, masih banyak fungsi lain untuk melakukan kustomisasi mail, lebih lanjut bisa di lihat di <https://laravel.com/docs/8.x/mail>
 
-<p>
-Konfigurasi ini didapatkan dari sistem Mailtrap. Untuk mendapatkannya, bisa dengan login ke akun <b>Mailtrap</b>, kemudian pilih <b>Inboxes</b> lalu pilih inbox yang diinginkan
-</p>
+## Penyesuaian environment ( .env )
 
-Contoh :
-* ![GitHub Logo](/Mail/images/mailtrap-1.jpg)
-* ![GitHub Logo](/Mail/images/mailtrap-2.jpg)
+Untuk menjalankan fitur Mail ini, perlu dilakukan penyesuaian environment sesuai dengan *driver* mail yang akan digunakan.
 
-### 2.2 SMTP-Gmail
-<p>
-Untuk menggunakan SMTP dari Gmail, dapat mengikuti langkah-langkah berikut :
-</p>
-1. Konfigurasi .env 
+* SMTP-Mailtrap
 
-```env
-MAIL_DRIVER=smtp
-MAIL_HOST=smtp.googlemail.com
-MAIL_PORT=465
-MAIL_USERNAME=ENTER_YOUR_EMAIL_ADDRESS(GMAIL)
-MAIL_PASSWORD=ENTER_YOUR_GMAIL_PASSWORD
-MAIL_ENCRYPTION=ssl
-```
+  Berikut contoh konfigurasi .env untuk *driver* Mailtrap
 
-2. Konfigurasi akun gmail yang akan digunakan
-	* Login ke akun Gmail, pilih <b>Manage your Google Account</b>
-	* Pilih menu <b>Security</b>
-	* Scroll ke bawah untuk mencari menu <b>Less secure app access</b> dan aktifkan menu ini
-	* ![GitHub Logo](/Mail/images/configure-gmail-account-2.jpg)
-3. Selesai
+  ```env
+    MAIL_MAILER=smtp
+    MAIL_HOST=smtp.mailtrap.io
+    MAIL_PORT=2525
+    MAIL_USERNAME=8caasd210878aw
+    MAIL_PASSWORD=c0f6dqw12c2weq
+    MAIL_ENCRYPTION=tls
+  ```
 
-## 3. Pembuatan blade / view sebagai tampilan email
-<p></p>
+  Konfigurasi ini didapatkan dari sistem Mailtrap. Untuk mendapatkannya, bisa dengan login ke akun *Mailtrap*, kemudian pilih *Inboxes* lalu pilih inbox yang diinginkan
 
-Contoh :
+  Contoh :
+  ![GitHub Logo](/Mail/images/mailtrap-1.jpg)
+  ![GitHub Logo](/Mail/images/mailtrap-2.jpg)
+
+* SMTP-Gmail
+
+  Untuk menggunakan SMTP dari Gmail, dapat mengikuti langkah-langkah berikut :
+
+  1. Konfigurasi .env 
+
+      ```env
+        MAIL_DRIVER=smtp
+        MAIL_HOST=smtp.googlemail.com
+        MAIL_PORT=465
+        MAIL_USERNAME=ENTER_YOUR_EMAIL_ADDRESS(GMAIL)
+        MAIL_PASSWORD=ENTER_YOUR_GMAIL_PASSWORD
+        MAIL_ENCRYPTION=ssl
+      ```
+
+  1. Konfigurasi akun gmail yang akan digunakan
+  
+      * Login ke akun Gmail, pilih *Manage your Google Account*
+      * Pilih menu *Security*
+      * Scroll ke bawah untuk mencari menu *Less secure app access* dan aktifkan menu ini
+      * ![GitHub Logo](/Mail/images/configure-gmail-account-2.jpg)
+
+## Pembuatan blade / view sebagai tampilan email
+
+Contoh file :
+
 ```html
 // direkrtori : \resources\views\emails\new-user.blade.php
 
@@ -118,8 +122,7 @@ Contoh :
 </div>
 ```
 
-## 4. Memanggil fungsi Mail untuk mengirim pesan dari Controller
-<p></p>
+## Memanggil fungsi Mail untuk mengirim pesan dari Controller
 
 Contoh :
 
@@ -130,17 +133,17 @@ public function testMail(Request $request)
     $subject = "test ngirim email";
 
     Mail::to('developer.arsoft@gmail.com')
-    	->cc('cak.inem@gmail.com')
+        ->cc('cak.inem@gmail.com')
         ->bcc('pak.jayan@gmail.com')
         ->send(new NewUser($subject, $name));
-
-	dd('asd');
+    
+    dd('asd');
 }
 ```
 
+referensi :
 
-referensi : 
-* https://blog.mailtrap.io/send-email-in-laravel/#What_you_need_to_know_about_Laravel_Mail 
-* https://laravel.com/docs/8.x/mail
-* https://www.cloudways.com/blog/send-email-in-laravel/
-* https://medium.com/@agavitalis/how-to-send-an-email-in-laravel-using-gmail-smtp-server-53d962f01a0c
+* <https://blog.mailtrap.io/send-email-in-laravel/#What_you_need_to_know_about_Laravel_Mail>
+* <https://laravel.com/docs/8.x/mail>
+* <https://www.cloudways.com/blog/send-email-in-laravel/>
+* <https://medium.com/@agavitalis/how-to-send-an-email-in-laravel-using-gmail-smtp-server-53d962f01a0c>
