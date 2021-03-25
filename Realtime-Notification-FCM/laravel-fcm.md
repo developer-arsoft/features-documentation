@@ -10,6 +10,38 @@ Berikut langkah-langkah konfigurasi yang diperlukan :
 
 Untuk mendukung fitur ini, perlu ditambahkan kolom **device_token** pada table **user** untuk menyimpan token dari device masing-masing user yang ada
 
+## Install package kawankoding/laravel-fcm
+
+Install package
+
+```cli
+composer require kawankoding/laravel-fcm "^0.2.0"
+```
+
+Publish vendor
+
+```cli
+php artisan vendor:publish --provider="Kawankoding\Fcm\FcmServiceProvider"
+```
+
+Update server key in config/laravel-fcm.php
+
+```php
+<?php
+
+return [
+
+    /**
+     * Set your FCM Server Key
+     * Change YOUR_KEY with your firebase key
+     */
+
+    'server_key' => env('FCM_SERVER_KEY', 'YOUR_KEY'),
+
+];
+
+```
+
 ## Konfigurasi **main-app** untuk menginisialisasi Firebase
 
 Konfigurasi ini dilakukan pada halaman utama ( contoh : /layouts/app.blade.php selaku *main-app* )
@@ -100,6 +132,8 @@ messaging.setBackgroundMessageHandler(function(payload) {
     );
 });
 ```
+
+NB: Jangan lupa untuk merubah value API_KEY, AUTH_DOMAIN, dll sesuai dengan data yang ada ( sama dengan konfigurasi inisialisasi firebase pada point sebelumnya )
 
 ( Opsional ) Untuk mengantisipasi service-worker yang tidak terdaftar secara otomatis, tambahkan script dibawah ini ke dalam **main-app** :
 
@@ -197,6 +231,15 @@ Mekanisme ini digunakan untuk menyimpan device-token dari user ke dalam database
     ```
 
     NB: lokasi dan waktu pemanggilan fungsi ini dapat dirubah sesuai kebutuhan, yang jelas tujuan utamanya adalah menyimpan device-token dari user ke database.
+
+1. Route
+
+    Jangan lupa menambahkan route untuk **save-token** dan **send-notification**
+
+    ```php
+    Route::post('/save-token', [MasterTestController::class, 'saveToken'])->name('save_token');
+    Route::post('/send-notification', [MasterTestController::class, 'sendNotification'])->name('send_notification');
+    ```
 
 ## Fungsi **send-notification**
 
