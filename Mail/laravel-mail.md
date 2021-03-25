@@ -106,16 +106,6 @@ MAIL_ENCRYPTION=ssl
 	* ![GitHub Logo](/Mail/images/configure-gmail-account-2.jpg)
 3. Selesai
 
-### 2.2 Mailgun
-<p>
-Dalam pengembangan . . .
-</p>
-
-### 2.2 etc
-<p>
-Dalam pengembangan . . .
-</p>
-
 ## 3. Pembuatan blade / view sebagai tampilan email
 <p></p>
 
