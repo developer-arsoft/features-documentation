@@ -237,8 +237,8 @@ Mekanisme ini digunakan untuk menyimpan device-token dari user ke dalam database
     Jangan lupa menambahkan route untuk **save-token** dan **send-notification**
 
     ```php
-    Route::post('/save-token', [MasterTestController::class, 'saveToken'])->name('save_token');
-    Route::post('/send-notification', [MasterTestController::class, 'sendNotification'])->name('send_notification');
+    Route::post('/save-token', [MasterTestController::class, 'saveToken'])->name('save-token');
+    Route::post('/send-notification', [MasterTestController::class, 'sendNotification'])->name('send-notification');
     ```
 
 ## Fungsi **send-notification**
