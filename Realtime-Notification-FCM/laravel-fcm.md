@@ -27,6 +27,8 @@ php artisan vendor:publish --provider="Kawankoding\Fcm\FcmServiceProvider"
 Update server key in config/laravel-fcm.php
 
 ```php
+// config/laravel-fcm.php
+
 <?php
 
 return [
@@ -49,6 +51,8 @@ Konfigurasi ini dilakukan pada halaman utama ( contoh : /layouts/app.blade.php s
 1. *import* firebase sdk menggunakan script dibawah ini :
 
     ```html
+    <!-- resources/views/layouts/app.blade.php -->
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
 
@@ -62,6 +66,8 @@ Konfigurasi ini dilakukan pada halaman utama ( contoh : /layouts/app.blade.php s
 1. Kemudian tambahkan script berikut untuk menginisialisasi firebase :
 
     ```html
+    <!-- resources/views/layouts/app.blade.php -->
+    
     <script>
         // Your web app's Firebase configuration
         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -89,6 +95,8 @@ Konfigurasi ini dilakukan pada halaman utama ( contoh : /layouts/app.blade.php s
 Pada direktori /public/, tambahkan sebuah file dengan nama **firebase-messaging-sw.js**. Tambahkan script dibawah ini kedalamnya :
 
 ```js
+// public/firebase-messaging-sw.js 
+
 /*
 Give the service worker access to Firebase Messaging.
 Note that you can only use Firebase Messaging here, other Firebase libraries are not available in the service worker.
@@ -138,13 +146,15 @@ NB: Jangan lupa untuk merubah value API_KEY, AUTH_DOMAIN, dll sesuai dengan data
 ( Opsional ) Untuk mengantisipasi service-worker yang tidak terdaftar secara otomatis, tambahkan script dibawah ini ke dalam **main-app** :
 
 ```html
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/firebase-messaging-sw.js');
-            });
-        }
-    </script>
+<!-- resources/views/layouts/app.blade.php -->
+
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/firebase-messaging-sw.js');
+        });
+    }
+</script>
 ```
 
 ## Fungsi **save-token**
@@ -156,6 +166,8 @@ Mekanisme ini digunakan untuk menyimpan device-token dari user ke dalam database
     Tambahkan fungsi berikut pada **main-app** untuk mendapatkan device-token dari firebase kemudian mengirimkannya ke backend untuk disimpan ke database :
 
     ```html
+    <!-- resources/views/layouts/app.blade.php -->
+
     <script>
         const messaging = firebase.messaging();
     
@@ -198,6 +210,8 @@ Mekanisme ini digunakan untuk menyimpan device-token dari user ke dalam database
     ( Opsional ) Selanjutnya, tambahkan script dibawah ini untuk *listening* notifikasi dari firebase :
 
     ```html
+    <!-- resources/views/layouts/app.blade.php -->
+    
     <script>
         messaging.onMessage(function(payload) {
             // do your things
