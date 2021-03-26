@@ -93,7 +93,7 @@ Untuk menjalankan fitur Mail ini, perlu dilakukan penyesuaian environment sesuai
 
   Untuk menggunakan SMTP dari Gmail, dapat mengikuti langkah-langkah berikut :
 
-  1. Konfigurasi .env 
+  1. Konfigurasi .env
 
       ```env
         MAIL_DRIVER=smtp
