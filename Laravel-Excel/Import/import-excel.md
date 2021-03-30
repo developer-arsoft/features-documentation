@@ -118,3 +118,64 @@ Untuk melakukan uji coba fitur import *basic*, dapat dilakukan dengan langkah-la
 
     $collection = Excel::toCollection(new UsersImport, 'users.xlsx');
     ```
+
+1. *WithHeadingRow*
+
+    *HeadingRow* memungkinkan untuk memanggil kolom menggunakan nama, tidak menggunakan index kolom
+
+    ```php
+    // app/Imports/UserImport.php
+
+    use Maatwebsite\Excel\Concerns\WithHeadingRow;
+
+    class UserImport implements ToModel, WithHeadingRow
+    {
+        public function model(array $row)
+        {
+            return new User([
+                'name' => $row['name'],
+                'email' => $row['email'],
+                'password' => Hash::make($row['pass'])
+            ]);
+        }
+    }
+    ```
+
+    NB
+    * Perlu diperhatikan, pastikan heading-row berada pada baris pertama dalam file excel ( tidak ada baris kosong diatas heading-row )
+
+1. *ChunkReading* dan *Batch Inserts*
+
+    *Chunk reading* berguna untuk membagi data menjadi beberapa collection. Sedangkan *Batch inserts* berguna untuk mengatur jumlah maksimal data yang akan dimasukkan ke database dalam 1 periode ( batch )
+
+    Dua fitur ini umumnya digunakan bersamaan untuk mengatur dan mengoptimalkan proses import excel
+
+    ```php
+    // app/Imports/UserImport.php
+    
+    use Maatwebsite\Excel\Concerns\WithBatchInserts;
+    use Maatwebsite\Excel\Concerns\WithChunkReading;
+    use Maatwebsite\Excel\Concerns\WithHeadingRow;
+
+    class UserImport implements ToModel, WithBatchInserts, WithChunkReading, WithHeadingRow
+    {
+        public function model(array $row)
+        {
+            return new User([
+                'name' => $row['name'],
+                'email' => $row['email'],
+                'password' => Hash::make($row['pass'])
+            ]);
+        }
+
+        public function batchSize(): int
+        {
+            return 1000;
+        }
+        
+        public function chunkSize(): int
+        {
+            return 1000;
+        }
+    }
+    ```
