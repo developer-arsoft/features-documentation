@@ -1,4 +1,4 @@
-# Qr-Code generator
+# Qr-Code Generator
 
 Package yang digunakan kali ini adalah <https://github.com/SimpleSoftwareIO/simple-qrcode>
 
