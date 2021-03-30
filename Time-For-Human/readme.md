@@ -10,7 +10,7 @@ Contoh :
 $timeTest = Carbon::now()->diffForHumans();
 ```
 
-Outpu :
+Output :
 
 ```php
 5 hours ago
