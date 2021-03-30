@@ -179,3 +179,44 @@ Untuk melakukan uji coba fitur import *basic*, dapat dilakukan dengan langkah-la
         }
     }
     ```
+
+1. *Queued Reading* secara implisit
+
+    Untuk mengaktifkan queue secara default ( implisit ), maka bisa dengan menambahkan *ShouldQueue* pada import-file
+
+    ```php
+    // app/Imports/UserImport.php
+    
+    use Maatwebsite\Excel\Concerns\WithChunkReading;
+    use Illuminate\Contracts\Queue\ShouldQueue;
+
+    class UserImport implements ToModel, WithBatchInserts, WithChunkReading, WithHeadingRow, ShouldQueue
+    {
+        public function model(array $row)
+        {
+            return new User([
+                'name' => $row['name'],
+                'email' => $row['email'],
+                'password' => Hash::make($row['pass'])
+            ]);
+        }
+    }
+    ```
+
+    NB
+    * Perlu diperhatikan, **ShouldQueue** secara **implisit** hanya bisa digunakan bersamaan dengan **WithChunkReading**
+
+1. *Queued Reading* secara eksplisit
+
+    Untuk memanfaatkan queue secara eksplisit, dapat dilakukan dengan memanggil *queueImport* pada controller
+
+    ```php
+    // App/Http/Controllers/MasterTestController
+
+    // import excel and insert to database
+    Excel::queueImport(new UserImport, storage_path('app/public/user-import-dummy.xlsx'));
+    ```
+
+    NB
+    * Pastikan bahwa import-file sudah mengimplementasikan **ShouldQueue** seperti pada proses *Queued Reading secara implisit*
+
