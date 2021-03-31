@@ -18,7 +18,7 @@ php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider" -
 
 ## Mekanisme Dasar
 
-Untuk melakukan uji coba fitur import *basic*, dapat dilakukan dengan langkah-langkah berikut ini :
+Untuk uji coba fitur import *basic*, dapat dilakukan dengan langkah-langkah berikut ini :
 
 1. Jalankan perintah *make:import* untuk membuat file *import*
 
@@ -219,4 +219,3 @@ Untuk melakukan uji coba fitur import *basic*, dapat dilakukan dengan langkah-la
 
     NB
     * Pastikan bahwa import-file sudah mengimplementasikan **ShouldQueue** seperti pada proses *Queued Reading secara implisit*
-
