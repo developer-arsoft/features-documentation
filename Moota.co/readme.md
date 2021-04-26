@@ -48,3 +48,5 @@ Selain dari mutasi bank, kita juga bisa melakukan hal lain menggunakan API yang 
 1. dll
 
 Untuk informasi *endpoint API* yang disediakan oleh Moota.co, bisa akses ke link berikut : <https://app.moota.co/api/explorer>
+
+Jangan lupa untuk menyisipkan *Personal Access Token* yang sudha didapat sebelumnya ( Konfigutas : langkah ke 2 ) sebagai credentials untuk mengakses *endpoint API*
